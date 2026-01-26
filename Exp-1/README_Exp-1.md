@@ -1,80 +1,106 @@
-# Library Management System Database
+Experiment: Library Management System Implementation
 
-This project is made for DBMS Practical Experiment 1.1.
+1. Aim of the Session
+   The aim of this practical is to design and implement a relational database schema for a Library Management System. This involves defining tables with specific constraints, establishing relationships between entities, and managing database security through role-based access control.
 
-In this experiment, we created a Library Management System database using PostgreSQL.  
-It helps in managing books, visitors, and book issue records.
+2. Objective of the Session
+   Upon completing this session, the following objectives were achieved:
 
----
+Developed table structures using Primary Keys, Foreign Keys, and Check Constraints for data validation.
 
-## Student Information
+Gained proficiency in DML (Data Manipulation Language) operations, specifically INSERT, SELECT, UPDATE, and DELETE.
 
-Name: Aman Raj Ojha  
-UID: 24BAI70520  
-Branch: CSE - AIML  
-Semester: 4  
-Subject: DBMS (24CSH-298)  
-Date: 09-01-2026  
+Implemented DCL (Data Control Language) to manage user roles and granular permissions.
 
----
+Maintained referential integrity across multiple related tables (books, library_visitors, and book_issue).
 
-## Aim
+3. Practical / Experiment Steps
+   The implementation was carried out through the following tasks:
 
-To design and implement a database for a library using:
+Schema Definition: Created the base tables for books and library_visitors with specific constraints such as NOT NULL, UNIQUE, and CHECK (e.g., ensuring visitor age is 18+).
 
-- Tables
-- Primary and Foreign Keys
-- Constraints
-- Insert, Update, Delete operations
-- Role creation and privileges
+Relational Setup: Created the book_issue table to act as a transaction bridge, linking books and visitors via Foreign Keys.
 
----
+Data Population: Populated the tables with initial records to test the schema's validity.
 
-## Software Used
+Operational Testing: Performed updates on user information and attempted deletion of records to observe constraint behavior.
 
-- PostgreSQL
-- pgAdmin
+Security Administration: Created a librarian role with login credentials and configured its access levels using GRANT and REVOKE commands.
 
----
+4. Procedure of the Practical
+   The following steps were followed during the execution:
 
-## Tables Created
+System Initialization: Logged into the database environment and established a connection to the server.
 
-### 1. BOOKS Table
-This table stores book details like book name, author, and count.
+Database Creation: Initialized a new database to house the library management system.
 
-### 2. LIBRARY_VISITORS Table
-This table stores information about library members such as name, age, and email.
+Executing Table Scripts: Ran the CREATE TABLE commands in a specific sequence (creating parent tables before dependent transaction tables).
 
-### 3. BOOK_ISSUE Table
-This table keeps record of issued books with issue date.
+Data Entry: Executed INSERT statements to add sample books and visitor profiles.
 
----
+Query Verification: Used SELECT queries to verify that the data was correctly stored and consistent across tables.
 
-## SQL Operations Done
+Data Modification: Tested the UPDATE and DELETE commands to ensure the system handles changes as intended.
 
-- Created tables using CREATE command  
-- Added constraints using ALTER  
-- Inserted records using INSERT  
-- Updated issue date using UPDATE  
-- Deleted records using DELETE  
+Role Configuration: Defined the librarian role and assigned specific table privileges.
 
----
+Security Verification: Tested and then revoked permissions to confirm the effectiveness of the security policy.
 
-## Role and Privileges
+Record Maintenance: Saved the SQL script and took screenshots of the execution results.
 
-A role named **LIBRARIAN** was created.
+5. I/O Analysis (Input / Output Analysis)
+   Input Queries
+   SQL
+   -- Table Creation
+   CREATE TABLE books(
+   id INT PRIMARY KEY,
+   name VARCHAR(50) NOT NULL,
+   author_name VARCHAR(50) NOT NULL,
+   count INT CHECK(count>0)
+   );
 
-Permissions like SELECT, INSERT, DELETE, and UPDATE were granted and revoked for security.
+CREATE TABLE library_visitors(
+user_id INT PRIMARY KEY,
+user_name VARCHAR(20) NOT NULL,
+age INT CHECK(age>=18) NOT NULL,
+email VARCHAR(40) UNIQUE NOT NULL
+);
 
----
+CREATE TABLE book_issue(
+book_issue_id INT PRIMARY KEY,
+book_id INT NOT NULL,
+user_id INT NOT NULL,
+FOREIGN KEY (book_id) REFERENCES books(id),
+FOREIGN KEY (user_id) REFERENCES library_visitors(user_id),
+book_issue_date DATE NOT NULL
+);
 
-## Learning Outcome
+-- Data Manipulation
+INSERT INTO books VALUES(1, 'Hairy Popter', 'R. Snap', 1);
+INSERT INTO library_visitors VALUES(101, 'Robert', 20, 'abc@il.com');
+UPDATE library_visitors SET email='Robel.com' WHERE user_id = 101;
 
-- Learned how to create and manage tables in PostgreSQL  
-- Understood primary key and foreign key usage  
-- Practiced DDL, DML, and DCL commands  
-- Learned role-based access control
+-- Role Management
+CREATE ROLE librarian WITH LOGIN PASSWORD 'WHIPWHIP';
+GRANT SELECT, INSERT, DELETE, UPDATE ON books TO librarian;
+Output Details
+Schema Success: All tables were created successfully. The system correctly enforced the CHECK(age>=18) constraint, rejecting invalid entries.
+![alt text](<ss1.png>)
+DML Results: The UPDATE query correctly modified the email field for user 101, and SELECT queries displayed the current state of all tables accurately.
+![alt text](<ss2.png>)
 
----
+DCL Verification: The librarian role was successfully created and assigned the necessary privileges for library management tasks.
 
-Experiment completed successfully.
+![alt text](<ss3.png>) ![alt text](<ss4.png>) ![alt text](<ss5.png>)
+
+Validation: Testing confirmed that after the REVOKE command, the librarian could no longer perform operations on the books table, ensuring the security policy is functional.
+![alt text](<ss6.png>)
+We also confirmed the permissions of the role “librarian” by checking the table privileges.
+![alt text](<ss7.png>) 6. Learning Outcome
+This practical session provided significant insights into:
+
+Structural Logic: Understanding how Foreign Keys and Check Constraints maintain high data quality and prevent logical errors.
+
+Security Implementation: Learning to manage database security through roles rather than individual user permissions.
+
+Practical Application: Applying SQL fundamentals to a real-world scenario (Library Management), demonstrating how relational databases handle complex interactions between entities.
