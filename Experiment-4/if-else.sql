@@ -1,11 +1,10 @@
-DO $$
 DECLARE
-    num INTEGER := -5;
+    num NUMBER := -5;
 BEGIN
     IF num > 0 THEN
-        RAISE NOTICE 'Number % is positive', num;
+        DBMS_OUTPUT.PUT_LINE('The number ' || num || ' is Positive.');
     ELSE
-        RAISE NOTICE 'Number % is non-positive', num;
+        DBMS_OUTPUT.PUT_LINE('The number ' || num || ' is Non-Positive.');
     END IF;
 END;
-$$;
+/
