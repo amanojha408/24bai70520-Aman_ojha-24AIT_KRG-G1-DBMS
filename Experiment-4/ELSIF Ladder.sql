@@ -1,20 +1,16 @@
-DO $$
 DECLARE
-    marks INTEGER := 85;
-    performance TEXT;
+    marks NUMBER := 55;
 BEGIN
     IF marks >= 90 THEN
-        performance := 'Excellent';
+        DBMS_OUTPUT.PUT_LINE('Performance: Excellent');
     ELSIF marks >= 75 THEN
-        performance := 'Very Good';
+        DBMS_OUTPUT.PUT_LINE('Performance: Very Good');
     ELSIF marks >= 60 THEN
-        performance := 'Good';
-    ELSIF marks >= 50 THEN
-        performance := 'Average';
+        DBMS_OUTPUT.PUT_LINE('Performance: Good');
+    ELSIF marks >= 40 THEN
+        DBMS_OUTPUT.PUT_LINE('Performance: Average');
     ELSE
-        performance := 'Poor';
+        DBMS_OUTPUT.PUT_LINE('Performance: Poor');
     END IF;
-
-    RAISE NOTICE 'Marks: %, Performance: %', marks, performance;
 END;
-$$;
+/
