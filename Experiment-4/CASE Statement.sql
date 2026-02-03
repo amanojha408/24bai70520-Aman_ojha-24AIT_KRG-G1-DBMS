@@ -1,19 +1,19 @@
-DO $$
 DECLARE
-    day_number INTEGER := 3;
-    day_name TEXT;
+    day_num NUMBER := 4;
+    day_name VARCHAR2(20);
 BEGIN
-    CASE day_number
-        WHEN 1 THEN day_name := 'Sunday';
-        WHEN 2 THEN day_name := 'Monday';
-        WHEN 3 THEN day_name := 'Tuesday';
-        WHEN 4 THEN day_name := 'Wednesday';
-        WHEN 5 THEN day_name := 'Thursday';
-        WHEN 6 THEN day_name := 'Friday';
-        WHEN 7 THEN day_name := 'Saturday';
-        ELSE day_name := 'Invalid day';
-    END CASE;
+    day_name :=
+        CASE day_num
+            WHEN 1 THEN 'Monday'
+            WHEN 2 THEN 'Tuesday'
+            WHEN 3 THEN 'Wednesday'
+            WHEN 4 THEN 'Thursday'
+            WHEN 5 THEN 'Friday'
+            WHEN 6 THEN 'Saturday'
+            WHEN 7 THEN 'Sunday'
+            ELSE 'Invalid Day Number'
+        END;
 
-    RAISE NOTICE 'Day % is %', day_number, day_name;
+    DBMS_OUTPUT.PUT_LINE('Day is: ' || day_name);
 END;
-$$;
+/
