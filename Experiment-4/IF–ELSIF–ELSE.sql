@@ -1,18 +1,16 @@
-DO $$
 DECLARE
-    marks INTEGER := 78;
-    grade CHAR;
+    marks NUMBER := 82;
 BEGIN
     IF marks >= 90 THEN
-        grade := 'A';
+        DBMS_OUTPUT.PUT_LINE('Grade: A+');
     ELSIF marks >= 75 THEN
-        grade := 'B';
+        DBMS_OUTPUT.PUT_LINE('Grade: A');
     ELSIF marks >= 60 THEN
-        grade := 'C';
+        DBMS_OUTPUT.PUT_LINE('Grade: B');
+    ELSIF marks >= 40 THEN
+        DBMS_OUTPUT.PUT_LINE('Grade: C');
     ELSE
-        grade := 'F';
+        DBMS_OUTPUT.PUT_LINE('Grade: Fail');
     END IF;
-
-    RAISE NOTICE 'Marks: %, Grade: %', marks, grade;
 END;
-$$;
+/
