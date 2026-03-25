@@ -139,14 +139,14 @@ This technique helps in categorizing numerical data efficiently and is useful in
 
 ## Screenshot
 
-<img width="1082" height="860" alt="Screenshot 2026-02-27 103344"  />
+<img width="1082" height="860" alt="Screenshot 2026-02-27 103344" src="Screenshot 2026-02-27 103344.png"  />
 
-<img width="1121" height="1013" alt="Screenshot 2026-02-27 103427"  />
+<img width="1121" height="1013" alt="Screenshot 2026-02-27 103427" src="Screenshot 2026-02-27 103427.png"/>
 
-<img width="1090" height="889" alt="Screenshot 2026-02-27 103451"  />
+<img width="1090" height="889" alt="Screenshot 2026-02-27 103451" src="Screenshot 2026-02-27 103451.png" />
 
-<img width="1078" height="705" alt="Screenshot 2026-02-27 103513"  />
+<img width="1078" height="705" alt="Screenshot 2026-02-27 103513" src= "Screenshot 2026-02-27 103513.png" />
 
-<img width="1103" height="889" alt="Screenshot 2026-02-27 103533"  />
+<img width="1103" height="889" alt="Screenshot 2026-02-27 103533" src="Screenshot 2026-02-27 103533"/>
 
-<img width="1101" height="890" alt="Screenshot 2026-02-27 103552"  />
+<img width="1101" height="890" alt="Screenshot 2026-02-27 103552" src="Screenshot 2026-02-27 103552" />
